@@ -30,7 +30,10 @@ function setCrystal(min, max) {
     console.log(crystalValue);
 
 };
-
+function resetCounter(){
+    scoreCount = 0;
+    $("#scoreCounter").text(scoreCount);
+}
 function resetGame(){
     crystalValue = [];
     scoreCount = 0;
@@ -41,11 +44,30 @@ function resetGame(){
     setCrystal(1, 12);
 }
 
-$(document).ready(function () {
+function gamePlay(){
+    targetNumber = Math.floor(Math.random() * (120 - 19 + 1) + 19);
     $("#targetNum").html("<h1>" + randomNumber(19, 120) + "<h1>");
-    setCrystal(1, 12);
+    crystalValue = [];
+    resetCounter();
+    $("#crystals").text("");
+    
+    
+    for (var i = 0; i < 4; i++) {
+        var randValue = Math.floor(Math.random() * (12 - 1 + 1) + 1);
+        crystalValue.push(randValue);
+    }
 
+    for (var j = 0; j < crystalValue.length; j++) {
+        var imageCrystal = $("<img>");
+        imageCrystal.addClass("crystal-image");
+        imageCrystal.attr("src", crystalImage[j]);
+        imageCrystal.attr("data-crystalValue", crystalValue[j]);
+        $("#crystals").append(imageCrystal);
 
+    }
+};
+
+gamePlay();
 
     $(".crystal-image").on("click", function () {
         var userScore = parseInt($(this).attr("data-crystalValue"));
@@ -56,14 +78,14 @@ $(document).ready(function () {
         if (scoreCount === targetNumber){
            numWins++;
            $("#wins").text(numWins);
-           resetGame();
+           gamePlay();
+        
        }
        else if(targetNumber < scoreCount){
             numLosses++;
             $("#losses").text(numLosses);
-           resetGame();
+            gamePlay();
        }
-
+    
     });
 
-});

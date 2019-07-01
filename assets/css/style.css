@@ -1,5 +1,66 @@
+*{
+    box-sizing: border-box;
+}
+
+header {
+    background-color: rgba(4, 55, 90, 0.959);
+    font-size: 130%;
+    color: white;
+    margin: 0.5%;
+    padding: 0.2%;
+    text-align: center;
+    
+
+}
+h2 {
+    text-align: center;
+    color: rgba(4, 55, 90, 0.959);
+    font-size: 160%;
+}
+
+#targetNum {
+    float: left;
+    width: 45%;
+    color: white;
+    background-color: rgb(16, 78, 16);
+    margin: 0.5%;
+    text-align: center;
+    padding: 1%;
+    font-size: 180%;
+}
+
+#win-lose {
+    float: left;
+    width: 22%;
+    margin: 0.5%;
+    padding: 1%;
+    background-color:  rgb(16, 78, 16);
+    color: white;
+    padding: 5%;
+    font-size: 120%;
+}
+#rules {
+    float: left;
+    display: block;
+    width: 30%;
+    margin: 0.5%;
+    padding: 1%;
+    text-align: justify;
+    border: 1px solid grey;
+}
+
+#crystal-div {
+    float: left;
+    width: 45%;
+    margin: 0.5%;
+    margin-top: 3%;
+    margin-right: 0%;
+   
+}
+
 .crystal-image {
-    width: 150px;
-    height: 150px;
-    margin: 10px;
+    width: 120px;
+    height: 120px;
+    margin: 8px;
+    
 }

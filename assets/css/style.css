@@ -58,6 +58,17 @@ h2 {
    
 }
 
+#score {
+    float: left;
+    background-color: rgb(16, 78, 16);
+    color: white;
+    margin: 1%;
+    width: 21.5%;
+    padding: 5%;
+    font-size: 120%;
+    font-weight: bolder;
+}
+
 .crystal-image {
     width: 120px;
     height: 120px;

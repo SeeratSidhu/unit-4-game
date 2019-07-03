@@ -6,47 +6,15 @@ var numLosses = 0;
 var scoreCount = 0;
 var targetNumber;
 
-
-function randomNumber(min, max) {
-    targetNumber = Math.floor(Math.random() * (max - min + 1) + min);
-    return targetNumber;
-};
-
-function setCrystal(min, max) {
-    for (var i = 0; i < 4; i++) {
-        var randValue = Math.floor(Math.random() * (max - min + 1) + min);
-        crystalValue.push(randValue);
-    }
-
-    for (var j = 0; j < crystalValue.length; j++) {
-        var imageCrystal = $("<img>");
-        imageCrystal.addClass("crystal-image");
-        imageCrystal.attr("src", crystalImage[j]);
-        imageCrystal.attr("data-crystalValue", crystalValue[j]);
-        $("#crystals").append(imageCrystal);
-
-    }
-
-    console.log(crystalValue);
-
-};
 function resetCounter() {
     scoreCount = 0;
     $("#scoreCounter").text(scoreCount);
-}
-function resetGame() {
-    crystalValue = [];
-    scoreCount = 0;
-    $("#targetNum").html("");
-    $("#crystals").html("");
-    $("#scoreCounter").text(scoreCount);
-    $("#targetNum").html("<h1>" + randomNumber(19, 120) + "<h1>");
-    setCrystal(1, 12);
-}
+};
 
 function gamePlay() {
+    
     targetNumber = Math.floor(Math.random() * (120 - 19 + 1) + 19);
-    $("#targetNum").html("<h1>" + randomNumber(19, 120) + "<h1>");
+    $("#targetNum").html("<h1>" + targetNumber + "<h1>");
     crystalValue = [];
     resetCounter();
     $("#crystals").empty();
@@ -74,14 +42,17 @@ $("#crystal-div").on("click", '.crystal-image', function () {
     scoreCount += userScore;
     console.log(userScore);
     $("#scoreCounter").text(scoreCount);
+    $("#message").hide();
 
     if (scoreCount === targetNumber) {
+        $("#message").text("You won!").show();
         numWins++;
         $("#wins").text(numWins);
         gamePlay();
 
     }
     else if (targetNumber < scoreCount) {
+        $("#message").text("You lost!").show();
         numLosses++;
         $("#losses").text(numLosses);
         gamePlay();
